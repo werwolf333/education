@@ -1,0 +1,28 @@
+{% extends 'training_class/index.html' %}
+{% block content %}
+        <div class="container">
+
+        <div class="panel panel-default ">
+            <div class="panel-heading">Ответы  {{ group }}</div>
+            <table class="table">
+                {% for decision in decisions %}
+                    <tr>
+                    <td>{{ decision }}</td>
+                    <td>
+                        {{ decision.student }} ({{ decision.student.client }})
+                    </td>
+                    <td>
+                        {% if decision.file.name %}
+                            <a href="{{ decision.file.url }}">{{ decision.file.name }}</a>
+                        {% endif %}
+                    </td>
+                    <td>
+                        <a class="btn-ms btn btn-default" href="/education/{{ group }}/task/{{ task_id }}/decision/{{ decision.id }}/edit">редактировать</a>
+                    </td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+        <a href="/education/{{ group }}/task" class="btn btn-default">вернуться</a>
+    </div>
+{% endblock %}

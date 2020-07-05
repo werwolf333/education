@@ -1,0 +1,42 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head lang="en">
+
+    <base href="/">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'training_class/style.css' %}" />
+
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+
+                <div>
+                    <ul class="nav navbar-nav">
+                        {% if username %}
+                            <li><a class=" active" href="/login/logout"> выйти</a></li>
+                            <li class="active"><a>{{ username }}</a></li>
+                            <li><a href="education/">класс</a></li>
+                        {% else %}
+                            <li><a class=" active" href="/login">войти</a></li>
+                        {% endif %}
+                    </ul>
+                </div>
+
+        </div>
+    </div>
+
+    <div class="Tab-top">
+        {% block content %}
+        {% endblock %}
+    </div>
+
+</body>
+</html>

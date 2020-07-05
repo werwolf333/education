@@ -1,0 +1,23 @@
+{% extends 'training_class/index.html' %}
+{% block content %}
+
+        <div class="container">
+        <div class="panel panel-default ">
+            <div class="panel-heading">Ответы  {{ group }}</div>
+            <table class="table">
+                {% for decision in decisions %}
+                    <tr>
+                    <td>{{ decision }}</td>
+                    <td>
+                        {{ decision.student }} ({{ decision.student.client }})
+                        {% if decision.file.name %}
+                            <a href="{{ decision.file.url }}">{{ decision.file.name }}</a>
+                        {% endif %}
+                    </td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+        <a href="/education/{{ group }}/decision" type="submit" class="btn btn-default">вернуться</a>
+    </div>
+{% endblock %}

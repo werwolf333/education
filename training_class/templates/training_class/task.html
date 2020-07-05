@@ -1,0 +1,30 @@
+{% extends 'training_class/index.html' %}
+{% block content %}
+    <div class="container">
+
+    <div class="panel panel-default ">
+        <div class="panel-heading">Задания {{ group }}</div>
+        <table class="table">
+            {% for task in  tasks %}
+                <tr>
+                <td>{{ task }}</td>
+                <td>
+                    {{ task.teacher.client.user.username }}
+                </td>
+                <td>
+                    <a class="btn-ms btn btn-default" href="/education/{{ group }}/task/{{ task.id }}/decision">ответы студентов</a>
+                    <a class="btn-ms btn btn-default" href="/education/{{ group }}/task/{{ task.id }}/delete">удалить</a>
+                    <a class="btn-ms btn btn-default" href="/education/{{ group }}/task/{{ task.id }}/edit">редактировать</a>
+                </td>
+                </tr>
+            {% endfor %}
+        </table>
+        <div class="panel-footer">
+            <a class="btn-ms btn btn-default" href="/education/{{ group }}/task/add">добавить задание</a>
+        </div>
+    </div>
+    <a href="/education" type="submit" class="btn btn-default">вернуться</a>
+
+    </div>
+
+{% endblock %}

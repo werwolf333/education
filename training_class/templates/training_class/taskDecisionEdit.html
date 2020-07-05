@@ -1,0 +1,27 @@
+{% extends 'training_class/index.html' %}
+{% block content %}
+    <form method="POST" enctype="multipart/form-data">{% csrf_token %}
+        <div class="container">
+            <p>
+                <textarea name="text">{{ decision }}</textarea>
+            </p>
+            <p>
+                текущий файл:
+            </p>
+            <p>
+            {% if decision.file.name %}
+                {{ decision.file.name }}
+            {% else %}
+                отсутствует
+            {% endif %}
+            <hr>
+             </p>
+            <p>
+                новый файл:
+                <input type="file" name="file" accept="">
+            </p>
+            <button type="submit" class="btn btn-default">изменить</button>
+            <a href="/education/{{ group }}/task/{{ task_id }}/decision" class="btn btn-default">вернуться</a>
+        </div>
+    </form>
+{% endblock %}

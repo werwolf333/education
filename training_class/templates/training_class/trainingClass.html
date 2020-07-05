@@ -1,0 +1,18 @@
+{% extends 'training_class/index.html' %}
+{% block content %}
+    <div class="container">
+
+    {% if status == 'teacher' %}
+        учитель
+        {% for i in groups %}
+            <p><a class="btn-ms btn btn-default" href="education/{{ i.group }}/task">{{ i.group }}</a><p>
+        {%  endfor %}
+    {% elif status == 'student' %}
+        студент
+        {% for i in groups %}
+            <p><a class="btn-ms btn btn-default" href="education/{{ i.group }}/decision">{{ i.group }}</a><p>
+        {%  endfor %}
+    {% endif %}
+
+    </div>
+{% endblock %}

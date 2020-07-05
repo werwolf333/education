@@ -1,0 +1,25 @@
+{% extends 'training_class/index.html' %}
+{% block content %}
+    <div class="container">
+        <div class="panel panel-default ">
+            <div class="panel-heading">Задачи  {{ group }}</div>
+            <table class="table">
+                {% for task in tasks %}
+                    <tr>
+                    <td>{{ task }}</td>
+                    <td>
+                        {{ task.teacher}} ({{ task.teacher.client }})
+                    </td>
+                    <td>
+                        <p><a class="btn-ms btn btn-default" href="education/{{ group }}/decision/{{ task.id }}/add">добавить решение</a><p>
+                    </td>
+                     <td>
+                        <p><a class="btn-ms btn btn-default" href="education/{{ group }}/decision/{{ task.id }}">просмотреть решения</a><p>
+                    </td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+        <a href="/education" type="submit" class="btn btn-default">вернуться</a>
+    </div>
+{% endblock %}
